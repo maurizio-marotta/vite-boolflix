@@ -1,13 +1,37 @@
 <script>
+import { store } from "../data/store";
 export default {
-  name: 'header'
-}
+  name: "header",
+  data() {
+    return {
+      store,
+    };
+  },
+};
 </script>
 
 <template>
-  <h1>ciao</h1>
+  <div class="container d-flex">
+    <div class="nome">
+      <h1>Boolflix</h1>
+    </div>
+    <div class="ricerca">
+      <input
+        type="text"
+        class="me-3"
+        placeholder="Cerca"
+        v-model="store.filmToSearch"/>
+
+      <button type="button" class="btn btn-info" @click="$emit('searchMovie')">
+        Cerca
+      </button>
+    </div>
+  </div>
 </template>
 
-<style>
-
+<style lang="scss" scoped>
+.container {
+  justify-content: space-between;
+  padding: 90px;
+}
 </style>
