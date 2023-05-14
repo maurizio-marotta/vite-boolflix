@@ -1,11 +1,15 @@
 <script>
+import cardVue from './card.vue';
 export default {
-  name: 'main'
+  name: 'main',
+  components: {
+    cardVue
+  }
 }
 </script>
 
 <template>
-  <h1>ciao</h1>
+
 </template>
 
 <style>

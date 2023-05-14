@@ -1,12 +1,26 @@
 <script>
 import { store } from "../data/store";
+import axios from "axios";
+ 
+
 export default {
   name: "header",
   data() {
     return {
       store,
-    };
+      text : ''
+    }
   },
+  methods : {
+    searchMovie(){
+      axios.get(store.apiUrl + '?query=' + this.text + '&api_key=' + store.apiKey) 
+      .then(result => {
+        store.movie = result.results
+        console.log(result.data.results);
+      })
+    } 
+  },
+
 };
 </script>
 
@@ -20,9 +34,9 @@ export default {
         type="text"
         class="me-3"
         placeholder="Cerca"
-        v-model="store.filmToSearch"/>
+        v-model="text"/>
 
-      <button type="button" class="btn btn-info" @click="$emit('searchMovie')">
+      <button type="button" @click="searchMovie">
         Cerca
       </button>
     </div>
