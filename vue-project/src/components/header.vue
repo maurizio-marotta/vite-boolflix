@@ -15,7 +15,7 @@ export default {
     searchMovie(){
       axios.get(store.apiUrl + '?query=' + this.text + '&api_key=' + store.apiKey) 
       .then(result => {
-        store.movie = result.results
+        store.movies = result.data.results
         console.log(result.data.results);
       })
     } 
